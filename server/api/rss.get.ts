@@ -17,7 +17,7 @@ export interface RSSResponse {
 export default defineEventHandler(async (event): Promise<RSSResponse> => {
   try {
     // 从配置中获取 RSS URL
-    const rssUrl = 'https://blog.sakura.ink/rss.xml'
+    const rssUrl = 'https://blog.sakura.ink/rss.xml'//自定义文章的RSS地址
     
     // 获取 RSS 数据，设置超时和重试
     const response = await $fetch<string>(rssUrl, {

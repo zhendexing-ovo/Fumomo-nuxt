@@ -33,12 +33,13 @@ export const siteConfig = {
   },
 
   // ========================================
-  // 文章和订阅设置 - 配置文章来源
+  // 文章设置 - 配置文章来源
+  // ！！！如果要订阅文章请在server/api/rss.get.ts中修改订阅链接！！！
   // ========================================
   articles: {
     // RSS订阅地址 - 文章页面会从这里获取文章列表
     // 将此地址替换为你的博客RSS地址
-    rssUrl: "https://blog.sakura.ink/rss.xml",
+
     
     // 文章页面标题
     pageTitle: "我的文章",
@@ -187,11 +188,6 @@ export function getSocialLinks() {
     url,
     name: platform.charAt(0).toUpperCase() + platform.slice(1)
   }));
-}
-
-// 获取文章RSS地址的辅助函数
-export function getRSSUrl() {
-  return siteConfig.articles.rssUrl;
 }
 
 // 获取网站完整标题的辅助函数

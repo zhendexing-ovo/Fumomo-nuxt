@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { siteConfig, getPageConfig, getRSSUrl } from '../config'
+import { siteConfig, getPageConfig,  } from '../config'
 
 // 页面配置
 const pageConfig = getPageConfig('articles')
-const rssUrl = getRSSUrl()
 
 // 设置页面元数据
 definePageMeta({
@@ -101,7 +100,7 @@ onMounted(() => {
                 <span>访问博客</span>
               </a>
               <a 
-                :href="rssUrl" 
+
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="flex items-center gap-2 bg-orange-500 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-orange-600 hover:scale-105 no-underline"
