@@ -107,26 +107,32 @@ onMounted(() => {
     
     // 滚轮事件处理
     const handleWheel = (e: WheelEvent) => {
+      // 调试信息（生产环境中可以移除）
+      console.log('Wheel event detected:', e.deltaY, 'Direction:', e.deltaY > 0 ? 'down' : 'up')
+      
       const scrollDirection = e.deltaY > 0 ? 1 : -1
-      const scrollIntensity = Math.min(Math.abs(e.deltaY) * 0.3, 50) // 增加强度倍数和最大值
+      const scrollIntensity = Math.min(Math.abs(e.deltaY) * 0.5, 80) // 增加强度
       
       // 反向设置滚轮偏移，向下滚动时跟随光标向上"逃跑"
-      scrollOffset = -scrollDirection * scrollIntensity // 反向效果
+      scrollOffset = -scrollDirection * scrollIntensity
       isScrolling = true
       
-      // 添加更明显的弹性效果
+      console.log('Scroll offset set to:', scrollOffset)
+      
+      // 立即应用更明显的视觉效果
       if (customCursorFollower.value) {
-        customCursorFollower.value.style.transition = 'opacity 0.05s ease, transform 0.1s ease'
-        customCursorFollower.value.style.opacity = '0.2'
-        customCursorFollower.value.style.transform = `translate(-50%, -50%) scale(1.2)`
+        // 直接设置样式，确保立即生效
+        customCursorFollower.value.style.setProperty('transition', 'opacity 0.1s ease, transform 0.15s ease', 'important')
+        customCursorFollower.value.style.setProperty('opacity', '0.1', 'important')
+        customCursorFollower.value.style.setProperty('transform', `translate(-50%, -50%) scale(1.5)`, 'important')
         
         setTimeout(() => {
           if (customCursorFollower.value) {
-            customCursorFollower.value.style.opacity = '0.5'
-            customCursorFollower.value.style.transform = `translate(-50%, -50%) scale(1)`
-            customCursorFollower.value.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            customCursorFollower.value.style.setProperty('opacity', '0.5', 'important')
+            customCursorFollower.value.style.setProperty('transform', `translate(-50%, -50%) scale(1)`, 'important')
+            customCursorFollower.value.style.setProperty('transition', 'opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)', 'important')
           }
-        }, 150)
+        }, 200)
       }
     }
     
@@ -150,8 +156,10 @@ onMounted(() => {
     }
     
     // 绑定事件
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('wheel', handleWheel)
+    document.addEventListener('mousemove', handleMouseMove, { passive: true })
+    // 绑定多种滚轮事件以确保兼容性
+    document.addEventListener('wheel', handleWheel, { passive: false })
+    window.addEventListener('wheel', handleWheel, { passive: false })
     animateFollower()
     
     // 为所有可点击元素添加悬停效果
@@ -165,6 +173,7 @@ onMounted(() => {
     onUnmounted(() => {
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('wheel', handleWheel)
       document.body.classList.remove('custom-cursor-active')
       clickableElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter)
