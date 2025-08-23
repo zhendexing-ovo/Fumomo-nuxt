@@ -86,7 +86,7 @@ onMounted(() => {
         <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-4 mb-8 border border-pink-100">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex items-center gap-2">
-              <span class="text-2xl">📖</span>
+              <span class="text-2xl"></span>
               <span class="text-primary text-sm">{{ siteConfig.articles.sourceDescription }}</span>
             </div>
             <div class="flex items-center gap-4">

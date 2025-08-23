@@ -16,8 +16,35 @@ const currentPage = computed(() => {
     <Navbar :current-page="currentPage" />
     
     <!-- 页面内容 -->
-    <NuxtPage />
+    <NuxtPage :transition="{
+      name: 'page',
+      mode: 'out-in'
+    }" />
     <!-- 页脚 -->
     <Footer />
   </NuxtLayout>
 </template>
+
+<style>
+/* 页面过渡动画 - 从下往上缓入 */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.page-enter-to,
+.page-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>

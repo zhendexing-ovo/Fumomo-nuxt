@@ -55,6 +55,8 @@ let mouseX = 0
 let mouseY = 0
 let followerX = 0
 let followerY = 0
+let scrollOffset = 0 // 滚轮偏移量
+let isScrolling = false // 是否在滚动中
 
 onMounted(() => {
   // 检测是否是桌面端（支持悬停的设备）
@@ -80,15 +82,52 @@ onMounted(() => {
       const dx = mouseX - followerX
       const dy = mouseY - followerY
       
+      // 添加滚轮偏移效果
+      const scrollEffect = isScrolling ? scrollOffset : 0
+      
       followerX += dx * 0.1
-      followerY += dy * 0.1
+      followerY += (dy + scrollEffect) * 0.1
       
       if (customCursorFollower.value) {
         customCursorFollower.value.style.left = followerX + 'px'
         customCursorFollower.value.style.top = followerY + 'px'
       }
       
+      // 逐渐减少滚轮偏移
+      if (isScrolling) {
+        scrollOffset *= 0.95
+        if (Math.abs(scrollOffset) < 0.1) {
+          scrollOffset = 0
+          isScrolling = false
+        }
+      }
+      
       requestAnimationFrame(animateFollower)
+    }
+    
+    // 滚轮事件处理
+    const handleWheel = (e: WheelEvent) => {
+      const scrollDirection = e.deltaY > 0 ? 1 : -1
+      const scrollIntensity = Math.min(Math.abs(e.deltaY) * 0.3, 50) // 增加强度倍数和最大值
+      
+      // 反向设置滚轮偏移，向下滚动时跟随光标向上"逃跑"
+      scrollOffset = -scrollDirection * scrollIntensity // 反向效果
+      isScrolling = true
+      
+      // 添加更明显的弹性效果
+      if (customCursorFollower.value) {
+        customCursorFollower.value.style.transition = 'opacity 0.05s ease, transform 0.1s ease'
+        customCursorFollower.value.style.opacity = '0.2'
+        customCursorFollower.value.style.transform = `translate(-50%, -50%) scale(1.2)`
+        
+        setTimeout(() => {
+          if (customCursorFollower.value) {
+            customCursorFollower.value.style.opacity = '0.5'
+            customCursorFollower.value.style.transform = `translate(-50%, -50%) scale(1)`
+            customCursorFollower.value.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+          }
+        }, 150)
+      }
     }
     
     // 鼠标悬停在可点击元素上
@@ -96,16 +135,23 @@ onMounted(() => {
       if (customCursor.value) {
         customCursor.value.classList.add('hover')
       }
+      if (customCursorFollower.value) {
+        customCursorFollower.value.classList.add('hover')
+      }
     }
     
     const handleMouseLeave = () => {
       if (customCursor.value) {
         customCursor.value.classList.remove('hover')
       }
+      if (customCursorFollower.value) {
+        customCursorFollower.value.classList.remove('hover')
+      }
     }
     
     // 绑定事件
     document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('wheel', handleWheel)
     animateFollower()
     
     // 为所有可点击元素添加悬停效果
@@ -118,6 +164,7 @@ onMounted(() => {
     // 清理函数
     onUnmounted(() => {
       document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('wheel', handleWheel)
       document.body.classList.remove('custom-cursor-active')
       clickableElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter)

@@ -61,7 +61,7 @@ const projects = [
                 :href="project.demoUrl" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-opacity-90 hover:scale-110 hover:-translate-y-1 hover:shadow-lg no-underline"
+                class=" text-primary px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-opacity-90 hover:scale-110 hover:-translate-y-1 hover:shadow-lg no-underline"
               >
                 {{ project.demoText }}
               </a>
