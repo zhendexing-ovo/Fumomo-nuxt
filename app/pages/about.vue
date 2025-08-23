@@ -45,10 +45,6 @@ definePageMeta({
               <li><strong>地理位置：</strong>{{ siteConfig.personal.location }}</li>
               <li><strong>兴趣爱好：</strong>{{ siteConfig.personal.hobby }}</li>
               <li><strong>学习中：</strong>{{ siteConfig.personal.learning }}</li>
-              <li class="flex justify-center">
-                <!-- TODO: 需要创建Umami组件 -->
-                <!-- <Umami /> -->
-              </li>
             </ul>
           </div>
         </section>

@@ -72,6 +72,17 @@ const formatDate = (dateString: string) => {
 onMounted(() => {
   fetchRSSData()
 })
+
+// 监听路由变化，切换页码时滚动到顶部
+watch(() => route.query.page, (newPage, oldPage) => {
+  if (newPage !== oldPage) {
+    // 平滑滚动到页面顶部
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+})
 </script>
 
 <template>

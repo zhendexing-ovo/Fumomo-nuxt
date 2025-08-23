@@ -14,7 +14,7 @@ const websites = [
   {
     title: '个人主页',
     description: '这是我的个人主页，也就是本站',
-    url: 'https://haku.sakura.ink',
+    url: 'https://fumomo-nuxt.vercel.app/',
     linkText: '点击查看 →'
   },
   {

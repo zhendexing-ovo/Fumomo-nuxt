@@ -19,7 +19,7 @@ export const siteConfig = {
   // ========================================
   site: {
     // 网站标题 - 显示在浏览器标签页和导航栏
-    title: "Haku Fumomo",
+    title: "Haku Fumomo-Nuxt",
     
     // 网站副标题 - 显示在首页标题下方
     subtitle: "你好，欢迎来到Haku的个人主页Fumomo！",
@@ -37,8 +37,6 @@ export const siteConfig = {
   // ！！！如果要订阅文章请在server/api/rss.get.ts中修改订阅链接！！！
   // ========================================
   articles: {
-    // RSS订阅地址 - 文章页面会从这里获取文章列表
-    // 将此地址替换为你的博客RSS地址
 
     
     // 文章页面标题
@@ -111,7 +109,6 @@ export const siteConfig = {
   personal: {
     // 基本信息
     name: "Haku",
-    nickname: "Mofumofu",
     bio: "平时喜欢整点新奇玩意，喜欢做点小项目。",
     hobby: "编程开发、网页设计",
     location: "广东深圳",
@@ -129,12 +126,6 @@ export const siteConfig = {
   // 网站UI设置
   // ========================================
   
-  // 页脚信息
-  footer: {
-    text: "愿这个小窝能给你带来温暖",
-    copyright: `© ${new Date().getFullYear()}`,
-    // icp: "粤ICP备12345678号",
-  },
 
   // 导航菜单
   navigation: [
@@ -158,7 +149,7 @@ export const siteConfig = {
   // Umami统计配置 - 记得在layout插入Umami的脚本
   // ========================================
   umami: {
-    enable: true, // 是否显示umami统计
+    enable: false, // 是否显示umami统计
     shareId: "VAARDWeRY31dw6ug", // 填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
     region: "eu", // Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
   },
