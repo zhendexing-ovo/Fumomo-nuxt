@@ -13,15 +13,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
-  // Nitro 配置，为 Vercel 部署优化
-  nitro: {
-    preset: 'vercel-edge',
-    // 预渲染路由，提高SEO和性能
-    prerender: {
-      routes: ['/']
-    }
-  },
-
   // 运行时配置
   runtimeConfig: {
     // 服务器端配置
