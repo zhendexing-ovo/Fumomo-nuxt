@@ -12,15 +12,8 @@ definePageMeta({
 // 项目数据
 const projects = [
   {
-    title: 'Fumomo',
-    description: '基于 Astro 构建的个人主页，温暖而现代的设计风格(暂未开源)',
-    demoUrl: 'https://fumofumo.vercel.app',
-    githubUrl: 'https://github.com/Hakutyan-bai/fumomo',
-    demoText: '预览项目'
-  },
-  {
     title: 'Fumomo-Nuxt',
-    description: '从 Astro 迁移到 Nuxt 的个人主页，温暖而现代的设计风格(暂未开源)',
+    description: '从 Astro 迁移到 Nuxt 的个人主页，温暖而现代的设计风格',
     demoUrl: 'https://fumomo-nuxt.vercel.app',
     githubUrl: 'https://github.com/Hakutyan-bai/fumomo-nuxt',
     demoText: '预览项目'

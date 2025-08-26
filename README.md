@@ -1,19 +1,19 @@
-# Nuxt Minimal Starter
-
 # Haku Fumomo - 个人主页
 
 一个基于 Nuxt 4 + Vue 3 + Tailwind CSS 构建的现代化个人主页，支持 RSS 订阅文章功能。
 
-## ✨ 功能特点
+[English](./docs/README.en.md) | [日本語](./docs/README.ja.md)
 
-- 🎨 现代化设计，支持响应式布局
-- 📱 移动端友好
-- 📖 RSS 文章订阅功能
-- 🚀 基于 Nuxt 4，性能优秀
-- 🎯 TypeScript 支持
-- 🌈 Tailwind CSS 样式
+## 功能特点
 
-## 🛠️ 技术栈
+- 现代化设计，支持响应式布局
+- 移动端友好
+- RSS 文章订阅功能
+- 基于 Nuxt 4，性能优秀
+- TypeScript 支持
+- Tailwind CSS 样式
+
+## 技术栈
 
 - **前端框架**: Nuxt 4 + Vue 3
 - **样式**: Tailwind CSS v3
@@ -21,7 +21,7 @@
 - **部署**: Vercel
 - **RSS解析**: fast-xml-parser
 
-## 📦 安装和运行
+## 安装和运行
 
 ### 本地开发
 
@@ -45,7 +45,7 @@ pnpm build
 pnpm preview
 ```
 
-## 🚀 部署到 Vercel
+## 部署到 Vercel
 
 ### 自动部署（推荐）
 
@@ -64,7 +64,7 @@ npm i -g vercel
 vercel --prod
 ```
 
-## ⚙️ 配置
+## 配置
 
 ### RSS 订阅配置
 
@@ -98,7 +98,7 @@ personal: {
 }
 ```
 
-## 📁 项目结构
+## 项目结构
 
 ```
 fumomo-nuxt/
@@ -106,21 +106,11 @@ fumomo-nuxt/
 │   ├── assets/
 │   │   └── styles/          # 全局样式
 │   ├── components/          # Vue 组件
-│   │   ├── Footer.vue
-│   │   ├── Navbar.vue
-│   │   ├── Myjourney.vue
-│   │   └── Qualification.vue
 │   ├── config/
 │   │   └── index.ts         # 网站配置
 │   ├── layouts/
 │   │   └── default.vue      # 默认布局
-│   ├── pages/               # 页面路由
-│   │   ├── index.vue        # 首页
-│   │   ├── about.vue        # 关于页面
-│   │   ├── articles.vue     # 文章页面
-│   │   ├── projects.vue     # 项目页面
-│   │   └── website.vue      # 网站页面
-│   └── app.vue              # 根组件
+│   └── pages/               # 页面路由
 ├── server/
 │   └── api/
 │       └── rss.get.ts       # RSS API 路由
@@ -129,7 +119,7 @@ fumomo-nuxt/
 └── package.json
 ```
 
-## 🔧 自定义配置
+## 自定义配置
 
 ### 修改主题色彩
 
@@ -158,7 +148,7 @@ navigation: [
 ]
 ```
 
-## 📝 RSS 功能说明
+## RSS 功能说明
 
 项目支持从外部博客获取 RSS 数据并在文章页面展示：
 
@@ -168,7 +158,7 @@ navigation: [
 4. **错误处理**: 网络错误时显示友好的错误信息
 5. **缓存优化**: Vercel 部署时会自动缓存 API 响应
 
-## 🌐 Vercel 部署优化
+## Vercel 部署优化
 
 项目已针对 Vercel 部署进行优化：
 
@@ -177,34 +167,25 @@ navigation: [
 - 自动缓存静态资源
 - 支持 Serverless Functions
 
-## 📄 许可证
+## 许可证
 
 MIT License
 
-## 🤝 贡献
+## 贡献
 
 欢迎提交 Issue 和 Pull Request！
 
 ---
 
-⭐ 如果这个项目对你有帮助，请给个 Star 支持一下！
+如果这个项目对你有帮助，请给个 Star 支持一下！
 
 ## Setup
 
 Make sure to install dependencies:
 
 ```bash
-# npm
-npm install
-
 # pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -212,17 +193,8 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
 # pnpm
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -230,33 +202,15 @@ bun run dev
 Build the application for production:
 
 ```bash
-# npm
-npm run build
-
 # pnpm
 pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
 
 ```bash
-# npm
-npm run preview
-
 # pnpm
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
