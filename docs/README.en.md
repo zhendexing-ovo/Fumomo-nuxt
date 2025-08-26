@@ -62,22 +62,7 @@ npm i -g vercel
 vercel --prod
 ```
 
-## Configuration
 
-### RSS Subscription
-
-Modify the RSS settings in `app/config/index.ts`:
-
-```typescript
-articles: {
-  // Change to your blog's RSS URL
-  rssUrl: "https://your-blog.com/rss.xml",
-  pageTitle: "My Articles",
-  pageDescription: "Tech shares and life thoughts",
-  postsPerPage: 10,
-  sourceDescription: "Article content from my blog"
-}
-```
 
 ### Personal Information
 
