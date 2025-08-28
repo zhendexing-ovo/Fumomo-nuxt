@@ -68,18 +68,9 @@ vercel --prod
 
 ### RSS 订阅配置
 
-在 `app/config/index.ts` 中修改 RSS 相关配置：
+在 `server/api/rss.get.ts` 中修改 RSS 相关配置：
 
-```typescript
-articles: {
-  // 修改为你的博客 RSS 地址
-  rssUrl: "https://your-blog.com/rss.xml",
-  pageTitle: "我的文章",
-  pageDescription: "技术分享与生活感悟",
-  postsPerPage: 10,
-  sourceDescription: "文章内容来自我的博客"
-}
-```
+
 
 ### 个人信息配置
 
@@ -148,15 +139,7 @@ navigation: [
 ]
 ```
 
-## RSS 功能说明
 
-项目支持从外部博客获取 RSS 数据并在文章页面展示：
-
-1. **RSS 数据获取**: 通过 `/api/rss` 接口获取
-2. **XML 解析**: 使用 `fast-xml-parser` 解析 RSS XML
-3. **自动分页**: 支持文章列表分页显示
-4. **错误处理**: 网络错误时显示友好的错误信息
-5. **缓存优化**: Vercel 部署时会自动缓存 API 响应
 
 ## Vercel 部署优化
 

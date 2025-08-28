@@ -64,20 +64,7 @@ vercel --prod
 
 ## 設定
 
-### RSS購読
 
-`app/config/index.ts`でRSS関連の設定を変更します：
-
-```typescript
-articles: {
-  // あなたのブログのRSS URLに変更
-  rssUrl: "https://your-blog.com/rss.xml",
-  pageTitle: "私の記事",
-  pageDescription: "技術共有と日々の思い",
-  postsPerPage: 10,
-  sourceDescription: "記事内容は私のブログから"
-}
-```
 
 ### 個人情報
 
