@@ -13,6 +13,14 @@ definePageMeta({
 const logoRef = ref<HTMLElement>()
 const subtitleRef = ref<HTMLElement>()
 const contentRef = ref<HTMLElement>()
+const mainRef = ref<HTMLElement>()
+
+// 分散动画状态
+const isScattering = ref(false)
+const scatterProgress = ref(0)
+
+// 路由导航
+const router = useRouter()
 
 onMounted(() => {
   // 触发动画序列
@@ -27,7 +35,52 @@ onMounted(() => {
   setTimeout(() => {
     if (contentRef.value) contentRef.value.classList.add('fade-in-delayed')
   }, 800)
+
+  // 添加滚轮事件监听
+  const handleWheel = (e: WheelEvent) => {
+    // 只有向下滚动且还没开始分散动画时才触发
+    if (e.deltaY > 0 && !isScattering.value) {
+      e.preventDefault()
+      startScatterAnimation()
+    }
+  }
+
+  // 绑定滚轮事件
+  document.addEventListener('wheel', handleWheel, { passive: false })
+
+  // 清理函数
+  onUnmounted(() => {
+    document.removeEventListener('wheel', handleWheel)
+  })
 })
+
+// 开始分散动画
+const startScatterAnimation = () => {
+  isScattering.value = true
+  
+  // 为每个组件添加分散动画类
+  if (logoRef.value) {
+    logoRef.value.classList.add('scatter-up')
+  }
+  
+  if (subtitleRef.value) {
+    subtitleRef.value.classList.add('scatter-down')
+  }
+  
+  if (contentRef.value) {
+    const cards = contentRef.value.querySelectorAll('.feature-card')
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add(`scatter-card-${index % 3}`)
+      }, index * 100)
+    })
+  }
+
+  // 1.5秒后导航到文章页
+  setTimeout(() => {
+    router.push('/articles')
+  }, 1500)
+}
 </script>
 
 <template>
@@ -36,7 +89,7 @@ onMounted(() => {
     <!-- TODO: 需要创建Loading组件 -->
     
     <!-- 主要内容 -->
-    <main class="min-h-screen bg-gradient-to-br from-pink-50 via-blue-50 to-purple-50 p-8" id="main-content">
+    <main class="min-h-screen bg-gradient-to-br from-pink-50 via-blue-50 to-purple-50 p-8 relative" id="main-content">
       <div class="max-w-screen-xl mx-auto text-center pt-36">
         <h1 
           ref="logoRef"
@@ -60,9 +113,9 @@ onMounted(() => {
           style="transform: translateY(3rem);"
         >
           <div 
-            v-for="feature in siteConfig.home.features" 
+            v-for="(feature, index) in siteConfig.home.features" 
             :key="feature.title"
-            class="backdrop-blur-sm bg-white/70 rounded-3xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+            :class="`feature-card backdrop-blur-sm bg-white/70 rounded-3xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105`"
             style="box-shadow: 0 8px 25px rgba(139, 90, 140, 0.15);"
           >
             <h2 class="text-2xl text-primary mb-4">{{ feature.title }}</h2>
@@ -70,10 +123,100 @@ onMounted(() => {
           </div>
         </div>
       </div>
+
+      <!-- 滚动提示 -->
+      <div 
+        v-if="!isScattering"
+        class="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-center opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <div class="animate-bounce">
+          <i class="fas fa-mouse text-2xl text-primary mb-2 block"></i>
+          <p class="text-sm text-muted">向下滚动进入文章页</p>
+        </div>
+      </div>
     </main>
   </div>
 </template>
 
 <style scoped>
-/* 动画类在 global.css 中定义 */
+/* 分散动画样式 */
+.scatter-up {
+  animation: scatterUp 1.5s ease-in-out forwards;
+}
+
+.scatter-down {
+  animation: scatterDown 1.5s ease-in-out forwards;
+}
+
+.scatter-card-0 {
+  animation: scatterLeft 1.5s ease-in-out forwards;
+}
+
+.scatter-card-1 {
+  animation: scatterCenter 1.5s ease-in-out forwards;
+}
+
+.scatter-card-2 {
+  animation: scatterRight 1.5s ease-in-out forwards;
+}
+
+@keyframes scatterUp {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes scatterDown {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes scatterLeft {
+  0% {
+    transform: scale(1) translateX(0) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translateX(-100vw) translateY(50vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes scatterCenter {
+  0% {
+    transform: scale(1) translateX(0) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translateX(0) translateY(-100vh) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes scatterRight {
+  0% {
+    transform: scale(1) translateX(0) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translateX(100vw) translateY(50vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* 为组件添加过渡效果 */
+.feature-card {
+  transition: all 0.3s ease;
+}
 </style>
