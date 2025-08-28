@@ -36,6 +36,9 @@ const paginationRef = ref<HTMLElement>()
 const scrollProgress = ref(0)
 const hasReachedBottom = ref(false) // 是否已经到达底部
 
+// 检测是否为移动设备
+const isMobile = ref(false)
+
 // 获取RSS数据
 const fetchRSSData = async () => {
   try {
@@ -79,6 +82,15 @@ const formatDate = (dateString: string) => {
 
 // 页面加载时获取数据
 onMounted(() => {
+  // 检测移动设备
+  isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+  
+  // 监听窗口大小变化
+  const handleResize = () => {
+    isMobile.value = window.innerWidth < 768
+  }
+  window.addEventListener('resize', handleResize)
+  
   fetchRSSData()
 
   // 更新滚动进度
@@ -128,6 +140,7 @@ onMounted(() => {
   onUnmounted(() => {
     document.removeEventListener('wheel', handleWheel)
     window.removeEventListener('scroll', updateScrollProgress)
+    window.removeEventListener('resize', handleResize)
   })
 })
 
@@ -339,7 +352,7 @@ watch(() => route.query.page, (newPage, oldPage) => {
 
       <!-- 滚动提示和进度指示器 -->
       <div 
-        v-if="!isScattering && !isLoading"
+        v-if="!isScattering && !isLoading && !isMobile"
         class="fixed bottom-8 right-8 text-center opacity-70 hover:opacity-100 transition-opacity duration-300"
       >
         <div 

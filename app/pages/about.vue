@@ -18,6 +18,9 @@ const showDisperse = ref(false)
 const scrollProgress = ref(0)
 const atBottom = ref(false)
 
+// 检测是否为移动设备
+const isMobile = ref(false)
+
 const handleScroll = () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop
   const windowHeight = window.innerHeight
@@ -47,13 +50,23 @@ const handleWheel = (event: WheelEvent) => {
 }
 
 onMounted(() => {
+  // 检测移动设备
+  isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+  
+  // 监听窗口大小变化
+  const handleResize = () => {
+    isMobile.value = window.innerWidth < 768
+  }
+  window.addEventListener('resize', handleResize)
+  
   window.addEventListener('scroll', handleScroll)
   window.addEventListener('wheel', handleWheel, { passive: false })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-  window.removeEventListener('wheel', handleWheel)
+  
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('wheel', handleWheel)
+    window.removeEventListener('resize', handleResize)
+  })
 })
 </script>
 
@@ -107,7 +120,7 @@ onUnmounted(() => {
 
       <!-- 滚动提示和进度指示器 -->
       <div 
-        v-if="!showDisperse"
+        v-if="!showDisperse && !isMobile"
         class="fixed bottom-8 right-8 text-center opacity-70 hover:opacity-100 transition-opacity duration-300"
       >
         <div 

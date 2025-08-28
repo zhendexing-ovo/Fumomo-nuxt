@@ -19,10 +19,23 @@ const mainRef = ref<HTMLElement>()
 const isScattering = ref(false)
 const scatterProgress = ref(0)
 
+// 移动端检测
+const isMobile = ref(false)
+
 // 路由导航
 const router = useRouter()
 
 onMounted(() => {
+  // 检测移动设备
+  const checkMobile = () => {
+    const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    const isMobileWidth = window.innerWidth <= 768
+    isMobile.value = isMobileUA || isMobileWidth
+  }
+  
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+
   // 触发动画序列
   setTimeout(() => {
     if (logoRef.value) logoRef.value.classList.add('bounce-in')
@@ -36,7 +49,7 @@ onMounted(() => {
     if (contentRef.value) contentRef.value.classList.add('fade-in-delayed')
   }, 800)
 
-  // 添加滚轮事件监听
+  // 添加滚轮事件监听（仅在非移动端）
   const handleWheel = (e: WheelEvent) => {
     // 只有向下滚动且还没开始分散动画时才触发
     if (e.deltaY > 0 && !isScattering.value) {
@@ -45,12 +58,15 @@ onMounted(() => {
     }
   }
 
-  // 绑定滚轮事件
-  document.addEventListener('wheel', handleWheel, { passive: false })
+  // 绑定滚轮事件（仅在非移动端）
+  if (!isMobile.value) {
+    document.addEventListener('wheel', handleWheel, { passive: false })
+  }
 
   // 清理函数
   onUnmounted(() => {
     document.removeEventListener('wheel', handleWheel)
+    window.removeEventListener('resize', checkMobile)
   })
 })
 
@@ -126,7 +142,7 @@ const startScatterAnimation = () => {
 
       <!-- 滚动提示 -->
       <div 
-        v-if="!isScattering"
+        v-if="!isScattering && !isMobile"
         class="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-center opacity-70 hover:opacity-100 transition-opacity duration-300"
       >
         <div class="animate-bounce">
