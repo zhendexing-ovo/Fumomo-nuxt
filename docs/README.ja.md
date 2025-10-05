@@ -1,21 +1,27 @@
-# Haku Fumomo - 個人ホームページ
+好的，这是翻译成日文并保留原始格式的内容：
 
-Nuxt 4 + Vue 3 + Tailwind CSSで構築された、RSSによる記事購読機能をサポートするモダンな個人ホームページです。
+# Haku Fumomo - パーソナルホームページ
 
-## 機能
+Nuxt 4 + Vue 3 + Tailwind CSS をベースに構築されたモダンなパーソナルホームページで、RSSフィードによる記事購読機能をサポートしています。
 
-- レスポンシブレイアウト対応のモダンなデザイン
+[English](./docs/README.en.md) | [日本語](./docs/README.ja.md)
+
+## 機能・特徴
+
+- モダンなデザイン、レスポンシブレイアウト対応
 - モバイルフレンドリー
-- RSS記事購読機能
-- Nuxt 4ベースの優れたパフォーマンス
-- TypeScriptサポート
+- RSSによる記事購読機能
+- Nuxt 4ベース、優れたパフォーマンス
+- TypeScript サポート
 - Tailwind CSSによるスタイリング
+- フレンドリンク：[RhenCloud](https://github.com/RhenCloud)様より
+- アクセス統計：[yCENzh](https://github.com/yCENzh)様より
 
 ## 技術スタック
 
 - **フロントエンドフレームワーク**: Nuxt 4 + Vue 3
 - **スタイリング**: Tailwind CSS v3
-- **型付け**: TypeScript
+- **型定義**: TypeScript
 - **デプロイ**: Vercel
 - **RSS解析**: fast-xml-parser
 
@@ -24,22 +30,22 @@ Nuxt 4 + Vue 3 + Tailwind CSSで構築された、RSSによる記事購読機能
 ### ローカル開発
 
 ```bash
-# 依存関係のインストール
+# 依存関係をインストール
 pnpm install
 
-# 開発サーバーの起動
+# 開発サーバーを起動
 pnpm dev
 
 # http://localhost:3000 にアクセス
 ```
 
-### 本番ビルド
+### プロダクションビルド
 
 ```bash
-# プロジェクトのビルド
+# プロジェクトをビルド
 pnpm build
 
-# ビルド結果のプレビュー
+# ビルド結果をプレビュー
 pnpm preview
 ```
 
@@ -47,15 +53,15 @@ pnpm preview
 
 ### 自動デプロイ（推奨）
 
-1. コードをGitHubリポジトリにプッシュ
-2. [Vercel](https://vercel.com)でGitHubリポジトリをインポート
-3. VercelがNuxtプロジェクトを自動検出しデプロイ
-4. デプロイ後、`.vercel.app`ドメインが取得できます
+1. コードをGitHubリポジトリにプッシュします
+2. [Vercel](https://vercel.com) であなたのGitHubリポジトリをインポートします
+3. VercelがNuxtプロジェクトを自動的に検出し、デプロイを行います
+4. デプロイが完了すると、`.vercel.app` ドメインが取得できます
 
 ### 手動デプロイ
 
 ```bash
-# Vercel CLIのインストール
+# Vercel CLIをインストール
 npm i -g vercel
 
 # デプロイ
@@ -64,11 +70,13 @@ vercel --prod
 
 ## 設定
 
+### RSSフィード設定、メール送受信設定
 
+`.env` で関連する設定を変更します
 
-### 個人情報
+### 個人情報の設定
 
-`app/config/index.ts`で個人情報を変更します：
+`app/config/index.ts` で個人情報を変更します：
 
 ```typescript
 personal: {
@@ -83,7 +91,7 @@ personal: {
 }
 ```
 
-## プロジェクト構造
+## プロジェクト構成
 
 ```
 fumomo-nuxt/
@@ -95,71 +103,61 @@ fumomo-nuxt/
 │   │   └── index.ts         # サイト設定
 │   ├── layouts/
 │   │   └── default.vue      # デフォルトレイアウト
-│   └── pages/               # ペイジルート
+│   └── pages/               # ページルート
 ├── server/
 │   └── api/
 │       └── rss.get.ts       # RSS APIルート
-├── public/                  # 静的アセット
+├── public/                  # 静的リソース
 ├── nuxt.config.ts           # Nuxt設定
 └── package.json
 ```
 
 ## カスタマイズ
 
-### テーマカラー
+### テーマカラーの変更
 
-`app/config/index.ts`の`theme`セクションを変更します：
+`app/config/index.ts` の `theme` 部分で変更します：
 
 ```typescript
 theme: {
-  primaryColor: "#8b5a8c",
-  secondaryColor: "#f0f9ff",
-  accentColor: "#ffeef8",
-  textColor: "#666",
+  primaryColor: "#8b5a8c",      // プライマリーカラー
+  secondaryColor: "#f0f9ff",    // セカンダリーカラー
+  accentColor: "#ffeef8",       // アクセントカラー
+  textColor: "#666",            // テキストカラー
   fontFamily: "'Comic Sans MS', 'XiaokeNailao', cursive, sans-serif"
 }
 ```
 
-### ナビゲーションメニュー
+### ナビゲーションメニューの変更
 
-`app/config/index.ts`の`navigation`セクションを変更します：
+`app/config/index.ts` の `navigation` 部分で変更します：
 
 ```typescript
 navigation: [
   { name: "ホーム", href: "/", key: "home"},
   { name: "記事", href: "/articles", key: "articles"},
-  { name: "私について", href: "/about", key: "about"},
-  // ナビゲーション項目を追加...
+  { name: "概要", href: "/about", key: "about"},
+  // さらにナビゲーション項目を追加...
 ]
 ```
 
-## RSS機能
+## Vercelデプロイの最適化
 
-外部ブログからRSSデータを取得し、記事ページに表示する機能をサポートしています：
+このプロジェクトはVercelへのデプロイに最適化されています：
 
-1. **RSSデータ取得**: `/api/rss`エンドポイント経由で取得
-2. **XML解析**: `fast-xml-parser`を使用してRSS XMLを解析
-3. **自動ページネーション**: 記事リストのページ分割表示をサポート
-4. **エラーハンドリング**: ネットワークエラー時にフレンドリーなエラーメッセージを表示
-5. **キャッシュ最適化**: VercelがAPIレスポンスを自動的にキャッシュ
-
-## Vercelデプロイ最適化
-
-Vercelデプロイ用に最適化されています：
-
-- `vercel-edge`プリセットを使用しパフォーマンスを向上
-- ホームページをプリレンダリングしSEOを向上
-- 静的アセットを自動的にキャッシュ
-- Serverless Functionsをサポート
+- `vercel-edge` プリセットを使用し、パフォーマンスを向上
+- ホームページをプリレンダリングし、SEOを向上
+- 静的リソースの自動キャッシング
+- サーバーレスファンクションに対応
 
 ## ライセンス
 
-MITライセンス
+MIT License
 
-## 貢献
+## コントリビュート
 
-IssueやPull Requestを歓迎します！
+IssueやPull Requestをお待ちしています！
 
 ---
 
-このプロジェクトが役立ったら、ぜひStarを付けてください！
+もしこのプロジェクトが役に立ったなら、ぜひStarを付けて応援してください！

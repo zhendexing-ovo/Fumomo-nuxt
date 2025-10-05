@@ -1,15 +1,21 @@
+好的，这是该内容的英文版本，同样保留了原始格式。
+
 # Haku Fumomo - Personal Homepage
 
-A modern personal homepage built with Nuxt 4 + Vue 3 + Tailwind CSS, with support for subscribing to articles via RSS.
+A modern personal homepage built with Nuxt 4 + Vue 3 + Tailwind CSS, featuring RSS article subscription.
+
+[English](./docs/README.en.md) | [日本語](./docs/README.ja.md)
 
 ## Features
 
-- Modern design with responsive layout
+- Modern design with responsive layout support
 - Mobile-friendly
 - RSS article subscription functionality
-- Excellent performance based on Nuxt 4
+- Built with Nuxt 4 for excellent performance
 - TypeScript support
-- Tailwind CSS for styling
+- Styled with Tailwind CSS
+- Friendly Links: from [RhenCloud](https://github.com/RhenCloud)
+- Visitor Analytics: from [yCENzh](https://github.com/yCENzh)
 
 ## Tech Stack
 
@@ -33,7 +39,7 @@ pnpm dev
 # Visit http://localhost:3000
 ```
 
-### Production Build
+### Building for Production
 
 ```bash
 # Build the project
@@ -43,14 +49,14 @@ pnpm build
 pnpm preview
 ```
 
-## Deployment to Vercel
+## Deploy to Vercel
 
 ### Automatic Deployment (Recommended)
 
 1. Push your code to a GitHub repository
 2. Import your GitHub repository on [Vercel](https://vercel.com)
 3. Vercel will automatically detect the Nuxt project and deploy it
-4. You will get a `.vercel.app` domain after deployment
+4. After deployment, you will get a `.vercel.app` domain
 
 ### Manual Deployment
 
@@ -62,9 +68,13 @@ npm i -g vercel
 vercel --prod
 ```
 
+## Configuration
 
+### RSS Subscription and Email Configuration
 
-### Personal Information
+Modify the relevant settings in the `.env` file.
+
+### Personal Information Configuration
 
 Modify your personal information in `app/config/index.ts`:
 
@@ -104,23 +114,23 @@ fumomo-nuxt/
 
 ## Customization
 
-### Theme Colors
+### Modifying Theme Colors
 
-Modify the `theme` section in `app/config/index.ts`:
+In the `theme` section of `app/config/index.ts`:
 
 ```typescript
 theme: {
-  primaryColor: "#8b5a8c",
-  secondaryColor: "#f0f9ff",
-  accentColor: "#ffeef8",
-  textColor: "#666",
+  primaryColor: "#8b5a8c",      // Primary color
+  secondaryColor: "#f0f9ff",    // Secondary color
+  accentColor: "#ffeef8",       // Accent color
+  textColor: "#666",            // Text color
   fontFamily: "'Comic Sans MS', 'XiaokeNailao', cursive, sans-serif"
 }
 ```
 
-### Navigation Menu
+### Modifying Navigation Menu
 
-Modify the `navigation` section in `app/config/index.ts`:
+In the `navigation` section of `app/config/index.ts`:
 
 ```typescript
 navigation: [
@@ -131,23 +141,13 @@ navigation: [
 ]
 ```
 
-## RSS Functionality
+## Vercel Deployment Optimizations
 
-The project supports fetching RSS data from an external blog and displaying it on the articles page:
+This project is optimized for Vercel deployment:
 
-1. **RSS Data Fetching**: Fetched via the `/api/rss` endpoint
-2. **XML Parsing**: Uses `fast-xml-parser` to parse RSS XML
-3. **Automatic Pagination**: Supports paginated article lists
-4. **Error Handling**: Displays a friendly error message on network failure
-5. **Cache Optimization**: Vercel automatically caches API responses
-
-## Vercel Deployment Optimization
-
-The project is optimized for Vercel deployment:
-
-- Uses the `vercel-edge` preset for better performance
+- Uses the `vercel-edge` preset for improved performance
 - Pre-renders the homepage for better SEO
-- Automatically caches static assets
+- Automatic caching of static assets
 - Supports Serverless Functions
 
 ## License
@@ -160,4 +160,4 @@ Issues and Pull Requests are welcome!
 
 ---
 
-If this project helps you, please give it a Star!
+If this project helps you, please give it a Star to show your support
