@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { siteConfig, getPageConfig } from '../config'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useUmamiStats } from '../composables/useUmamiStats'
 
 // 页面配置
 const pageConfig = getPageConfig('about')
@@ -9,6 +10,9 @@ const pageConfig = getPageConfig('about')
 definePageMeta({
   title: pageConfig.title
 })
+
+// 获取Umami统计数据
+const { data: stats } = await useAsyncData('umami-stats', () => useUmamiStats())
 
 // 分散动画相关
 const personalInfoRef = ref(null)
@@ -105,7 +109,7 @@ onMounted(() => {
               <li><strong>地理位置：</strong>{{ siteConfig.personal.location }}</li>
               <li><strong>兴趣爱好：</strong>{{ siteConfig.personal.hobby }}</li>
               <li><strong>学习中：</strong>{{ siteConfig.personal.learning }}</li>
-              <li>已有{{  }}人发现了我</li>
+              <li>已有{{ stats?.visitors || 0 }}人发现了我</li>
             </ul>
           </div>
         </section>
