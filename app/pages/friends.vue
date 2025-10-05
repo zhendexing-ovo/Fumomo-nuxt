@@ -60,9 +60,9 @@ const handleWheel = (event: WheelEvent) => {
         event.preventDefault();
         showDisperse.value = true;
 
-        // 延迟导航到首页
+        // 延迟导航到项目页
         setTimeout(() => {
-            navigateTo("/website");
+            navigateTo("/projects");
         }, 1000);
     }
 };
@@ -388,7 +388,7 @@ function resetForm() {
                         :class="atBottom ? 'fas fa-arrow-down text-green-500' : 'fas fa-mouse text-primary'"
                     ></i>
                     <p class="text-sm text-muted">
-                        {{ atBottom ? "再向下滚动进入网站页" : "滚动到底部" }}
+                        {{ atBottom ? "再向下滚动进入项目页" : "滚动到底部" }}
                     </p>
                 </div>
 

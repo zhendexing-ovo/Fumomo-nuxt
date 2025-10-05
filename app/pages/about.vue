@@ -46,9 +46,9 @@ const handleWheel = (event: WheelEvent) => {
     event.preventDefault()
     showDisperse.value = true
     
-    // 延迟导航到项目页
+    // 延迟导航到友链页
     setTimeout(() => {
-      navigateTo('/projects')
+      navigateTo('/friends')
     }, 1000)
   }
 }
@@ -109,7 +109,7 @@ onMounted(() => {
               <li><strong>地理位置：</strong>{{ siteConfig.personal.location }}</li>
               <li><strong>兴趣爱好：</strong>{{ siteConfig.personal.hobby }}</li>
               <li><strong>学习中：</strong>{{ siteConfig.personal.learning }}</li>
-              <li>已有{{ stats?.visitors || 0 }}人发现了我</li>
+              <li>{{ stats?.visitors ? "已有" + stats.visitors + "人发现了我" : "统计未启用" }}</li>
             </ul>
           </div>
         </section>
@@ -137,7 +137,7 @@ onMounted(() => {
             :class="atBottom ? 'fas fa-arrow-down text-green-500' : 'fas fa-mouse text-primary'"
           ></i>
           <p class="text-sm text-muted">
-            {{ atBottom ? '再向下滚动进入项目页' : '滚动到底部' }}
+            {{ atBottom ? '再向下滚动进入友链页' : '滚动到底部' }}
           </p>
         </div>
         

@@ -121,6 +121,9 @@ export const siteConfig = {
             github: "https://github.com/Hakutyan-bai",
             email: "lzj159035@foxmail.com",
         },
+        blog: {
+            url: "https://blog.sakura.ink",
+        },
     },
 
     // ========================================
@@ -132,8 +135,8 @@ export const siteConfig = {
         { name: "首页", href: "/", key: "home" },
         { name: "文章", href: "/articles", key: "articles" },
         { name: "关于", href: "/about", key: "about" },
-        { name: "项目", href: "/projects", key: "projects" },
         { name: "友链", href: "/friends", key: "friends" },
+        { name: "项目", href: "/projects", key: "projects" },
         { name: "网站", href: "/website", key: "website" },
     ],
 

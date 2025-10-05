@@ -39,6 +39,7 @@ useHead({
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' }
   ],
+  // Analytics - Umami
   script: [
     {
       defer: true,
