@@ -15,9 +15,8 @@ export default defineNuxtConfig({
 
   // 运行时配置
   runtimeConfig: {
-    // 服务器端配置
+    // 公开的运行时配置
     public: {
-      // 公开的运行时配置
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://haku.sakura.ink'
     }
   },

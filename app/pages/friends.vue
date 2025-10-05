@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { getPageConfig } from "../config";
-import { ref, onMounted, onUnmounted } from "vue";
 
 // 页面配置
 const pageConfig = getPageConfig("friends");
@@ -93,14 +92,12 @@ onMounted(() => {
 // 监听路由变化，切换页码时滚动到顶部
 watch(
     () => route.query.page,
-    (newPage, oldPage) => {
-        if (newPage !== oldPage) {
-            // 平滑滚动到页面顶部
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        }
+    () => {
+        // 平滑滚动到页面顶部
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     }
 );
 
@@ -115,10 +112,10 @@ interface Friend {
 // 网站数据
 const friends: Friend[] = [
     {
-        title: "示例友链1",
-        description: "示例描述1",
-        avatar: "/favicon.ico",
-        url: "https://www.example1.com",
+        title: "鈴奈咲桜のBlog",
+        description: "愛することを忘れないで",
+        avatar: "https://q2.qlogo.cn/headimg_dl?dst_uin=2731443459&spec=5",
+        url: "https://blog.sakura.ink",
     },
     {
         title: "示例友链2",
@@ -239,11 +236,7 @@ function resetForm() {
             </section>
 
             <!-- 申请友链表单弹窗 -->
-            <section
-                ref="applyFormRef"
-                class="bg-white rounded-2xl shadow-lg p-6 max-w-4xl w-full mb-12 component-card flex justify-center items-center"
-                style="box-shadow: 0 4px 24px rgba(139, 90, 140, 0.08)"
-            >
+            <Teleport to="body">
                 <div v-if="showApplyForm" class="modal-overlay" @click="showApplyForm = false">
                     <div class="modal-content apply-form" @click.stop>
                         <h2>申请友链</h2>
@@ -314,7 +307,7 @@ function resetForm() {
                         </form>
                     </div>
                 </div>
-            </section>
+            </Teleport>
 
             <!-- 分页导航 -->
             <section
@@ -395,7 +388,7 @@ function resetForm() {
                         :class="atBottom ? 'fas fa-arrow-down text-green-500' : 'fas fa-mouse text-primary'"
                     ></i>
                     <p class="text-sm text-muted">
-                        {{ atBottom ? "再向下滚动进入Q&A页" : "滚动到底部" }}
+                        {{ atBottom ? "再向下滚动进入网站页" : "滚动到底部" }}
                     </p>
                 </div>
 

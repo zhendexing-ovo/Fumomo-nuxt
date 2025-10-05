@@ -59,10 +59,14 @@ let scrollOffset = 0 // 滚轮偏移量
 let isScrolling = false // 是否在滚动中
 
 onMounted(() => {
+  // 检查配置中是否启用自定义鼠标样式
+  const customCursorEnabled = siteConfig.theme.customCursor
+  
   // 检测是否是桌面端（支持悬停的设备）
   const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches
   
-  if (isDesktop) {
+  // 只有在配置启用且是桌面端时才启用自定义光标
+  if (customCursorEnabled && isDesktop) {
     // 添加自定义光标控制类到body
     document.body.classList.add('custom-cursor-active')
     
@@ -186,16 +190,18 @@ onMounted(() => {
 
 <template>
   <div>
-    <!-- 自定义光标 -->
+    <!-- 自定义光标 - 只在配置启用时渲染 -->
     <ClientOnly>
-      <div 
-        ref="customCursor" 
-        class="custom-cursor"
-      ></div>
-      <div 
-        ref="customCursorFollower" 
-        class="custom-cursor-follower"
-      ></div>
+      <template v-if="siteConfig.theme.customCursor">
+        <div 
+          ref="customCursor" 
+          class="custom-cursor"
+        ></div>
+        <div 
+          ref="customCursorFollower" 
+          class="custom-cursor-follower"
+        ></div>
+      </template>
     </ClientOnly>
     
     <!-- 页面内容 -->

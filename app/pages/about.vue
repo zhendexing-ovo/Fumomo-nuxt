@@ -105,6 +105,7 @@ onMounted(() => {
               <li><strong>地理位置：</strong>{{ siteConfig.personal.location }}</li>
               <li><strong>兴趣爱好：</strong>{{ siteConfig.personal.hobby }}</li>
               <li><strong>学习中：</strong>{{ siteConfig.personal.learning }}</li>
+              <li>已有{{  }}人发现了我</li>
             </ul>
           </div>
         </section>

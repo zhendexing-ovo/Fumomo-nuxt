@@ -144,8 +144,8 @@ const awards: Award[] = [
     iconColor: 'text-blue-500'
   },
   {
-    title: 'CET-6证书',
-    subtitle: '英语六级',
+    title: 'JLPT-N2证书',
+    subtitle: '日语能力测试N2级',
     icon: 'fas fa-certificate',
     bgColor: 'bg-green-50',
     borderColor: 'border-green-200',

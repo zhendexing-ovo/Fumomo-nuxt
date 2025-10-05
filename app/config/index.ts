@@ -4,7 +4,7 @@
 //
 // 这个文件包含了网站的所有配置信息。你可以通过修改这些值来：
 // 更改网站标题和描述
-// 设置文章RSS订阅地址
+// 设置文章RSS订阅地址（请前往.env文件中修改）
 // 自定义首页内容和介绍
 // 修改个人信息和社交链接
 // 调整主题色彩和样式
@@ -144,13 +144,19 @@ export const siteConfig = {
         accentColor: "#ffeef8",
         textColor: "#666",
         fontFamily: "'Comic Sans MS', 'XiaokeNailao', cursive, sans-serif",
+        
+        // 自定义鼠标样式开关
+        // 设置为 true 启用自定义鼠标样式（小圆点 + 跟随效果）
+        // 设置为 false 使用系统默认鼠标样式
+        // 注意：自定义鼠标样式仅在桌面端（非触摸设备）生效
+        customCursor: true,
     },
 
     // ========================================
     // Umami统计配置 - 记得在layout插入Umami的脚本
     // ========================================
     umami: {
-        enable: false, // 是否显示umami统计
+        enable: true, // 是否显示umami统计
         shareId: "VAARDWeRY31dw6ug", // 填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
         region: "eu", // Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
     },
