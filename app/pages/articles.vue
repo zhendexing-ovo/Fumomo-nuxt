@@ -215,7 +215,7 @@ watch(() => route.query.page, (newPage, oldPage) => {
                 <span>访问博客</span>
               </a>
               <a 
-                :href="siteConfig.personal.blog.url.replace(/\/?$/, '/rss')"
+                :href="siteConfig.personal.blog.url.replace(/\/?$/, '/rss.xml')"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="flex items-center gap-2 bg-orange-500 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-orange-600 hover:scale-105 no-underline"
