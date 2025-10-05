@@ -89,7 +89,7 @@ onMounted(() => {
             <p class="text-muted text-lg mb-5 text-center">{{ siteConfig.personal.bio }}</p>
             <ul class="list-none p-0 m-0 text-base text-gray-700 space-y-3">
               <li>
-                <strong>社交连接：</strong>
+                <strong>社交链接：</strong>
                 <a 
                   :href="siteConfig.personal.social.github" 
                   target="_blank" 
