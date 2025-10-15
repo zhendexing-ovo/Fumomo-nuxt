@@ -8,39 +8,9 @@ interface TimelineItem {
 
 const timelineItems: TimelineItem[] = [
   {
-    date: '2025.08.20',
-    title: '完成第一个项目',
-    description: '独立开发并上线了个人主页（也就是本站）'
-  },
-  {
-    date: '2025.06',
-    title: '重新上线博客',
-    description: '23年初WordPress被打之后，选择静态网站重新搭建博客。'
-  },
-  {
-    date: '2025.05',
-    title: '第一次合作',
-    description: '与Hongxi合作开始开发项目，初识Vue，提升了自己的技术能力。'
-  },
-  {
-    date: '2024.09',
-    title: '进入大学',
-    description: '有了更多时间学习计算机科学与技术。'
-  },
-  {
-    date: '2022.09',
-    title: '第一个博客',
-    description: '使用WordPress搭建了我的第一个博客项目。'
-  },
-  {
-    date: '2022.04.05',
-    title: '注册了第二个域名',
-    description: '注册了第二个域名sakura.ink。当时觉得sakura很好听，我喜欢。'
-  },
-  {
-    date: '2020.07',
-    title: '接触到了前端三件套',
-    description: '学习了HTML、CSS和JavaScript，开始接触前端开发。'
+    date: '2025.10.15',
+    title: '上线第一个网站',
+    description: '个人主页（也就是本站）'
   }
 ]
 </script>
