@@ -33,7 +33,7 @@ export const siteConfig = {
 
     // ========================================
     // 文章设置 - 配置文章来源
-    // ！！！如果要订阅文章请在server/api/rss.get.ts中修改订阅链接！！！
+    // ！！！如果要设置文章RSS订阅地址（请前往.env文件中修改）
     // ========================================
     articles: {
         // 文章页面标题
@@ -160,8 +160,9 @@ export const siteConfig = {
     // ========================================
     umami: {
         enable: true, // 是否显示umami统计
-        shareId: "VAARDWeRY31dw6ug", // 填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
-        region: "eu", // Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
+        apiKey: "api_NqmrT65HsrwXosO7VqPCXXQPvWr6DclQ", // Umami Cloud V3 API 密钥，从 https://cloud.umami.is 获取
+        websiteId: "ac5e0626-4863-41ec-8a66-98ba076846a0", // 网站ID，从 Umami Cloud 获取
+        apiEndpoint: "https://api.umami.is", // Umami Cloud API 地址
     },
 };
 

@@ -10,6 +10,12 @@ export const useUmamiStats = async () => {
   if (!umamiConfig.enable) {
     return { visitors: 0 }
   }
+
+  // 检查是否配置了API密钥和网站ID
+  if (!umamiConfig.apiKey || !umamiConfig.websiteId) {
+    console.warn('Umami API密钥或网站ID未配置')
+    return { visitors: 0 }
+  }
   
   // 检查缓存
   if (typeof localStorage !== 'undefined') {
@@ -27,39 +33,32 @@ export const useUmamiStats = async () => {
   }
   
   try {
-    // 首先请求分享API获取websiteId和token
-    const authUrl = `https://${umamiConfig.region}.umami.is/api/share/${umamiConfig.shareId}`
-    const authResponse = await fetch(authUrl)
-    
-    if (!authResponse.ok) {
-      throw new Error(`认证请求失败: ${authResponse.status}`)
-    }
-    
-    const authData = await authResponse.json()
-    const token = authData.token
-    const websiteId = authData.websiteId
-    
-    // 使用token作为请求头，请求网站总体统计数据
-    // startAt=0 表示从1970年开始统计
-    // endAt=当前时间 表示统计到当前时间
+    // 使用 Umami Cloud V3 API
+    // 获取网站统计数据
     const endAt = Date.now()
-    const statsUrl = `https://${umamiConfig.region}.umami.is/api/websites/${websiteId}/stats?startAt=0&endAt=${endAt}&unit=day&timezone=Asia/Shanghai&compare=false`
+    const startAt = new Date('2020-01-01').getTime() // 从2020年开始统计（或设置为您网站创建的时间）
+    
+    // Umami Cloud V3 正确的 API 端点
+    const statsUrl = `${umamiConfig.apiEndpoint}/v1/websites/${umamiConfig.websiteId}/stats?startAt=${startAt}&endAt=${endAt}`
     
     const statsResponse = await fetch(statsUrl, {
       headers: {
-        'x-umami-share-token': token
+        'x-umami-api-key': umamiConfig.apiKey
       }
     })
     
     if (!statsResponse.ok) {
-      throw new Error(`统计数据请求失败: ${statsResponse.status}`)
+      const errorText = await statsResponse.text()
+      console.error('API 响应错误:', errorText)
+      throw new Error(`统计数据请求失败: ${statsResponse.status} ${statsResponse.statusText}`)
     }
     
     const statsData = await statsResponse.json()
     
     // 获取总的访客量
+    // Umami V3 API 直接返回数字，不是对象
     const result = {
-      visitors: statsData?.visitors?.value || 0
+      visitors: statsData?.visitors || 0
     }
     
     // 保存到缓存
