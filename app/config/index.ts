@@ -19,16 +19,16 @@ export const siteConfig = {
     // ========================================
     site: {
         // 网站标题 - 显示在浏览器标签页和导航栏
-        title: "Haku Fumomo-Nuxt",
+        title: "“行”的个人主页",
 
         // 网站副标题 - 显示在首页标题下方
-        subtitle: "你好，欢迎来到Haku的个人主页Fumomo！",
+        subtitle: "你好，欢迎来到“行”的个人主页！",
 
         // 网站描述 - 用于SEO和社交媒体分享
-        description: "欢迎来到Haku Fumomo的温柔世界，在这里分享技术、生活和思考",
+        description: "欢迎来到“行”的温柔世界，在这里分享技术、生活和思考",
 
         // 网站URL - 完整的域名地址
-        url: "https://haku.sakura.ink",
+        url: "https://zswtylgndsl.skura.app/",
     },
 
     // ========================================
@@ -109,20 +109,20 @@ export const siteConfig = {
     // ========================================
     personal: {
         // 基本信息
-        name: "Haku",
+        name: "行",
         bio: "平时喜欢整点新奇玩意，喜欢做点小项目。",
-        hobby: "编程开发、网页设计",
-        location: "广东深圳",
-        learning: "Astro、VUE、C#",
-        avatar: "https://q2.qlogo.cn/headimg_dl?dst_uin=2731443459&spec=5",
+        hobby: "爱好",
+        location: "不告诉你",
+        learning: "好多东西",
+        avatar: "touxiang.jpg", 
 
         // 关于页面社交媒体链接
         social: {
-            github: "https://github.com/Hakutyan-bai",
-            email: "lzj159035@foxmail.com",
+            github: "https://github.com/zhendexing-ovo",
+            email: "2068706068@qq.com",
         },
         blog: {
-            url: "https://blog.sakura.ink",
+            url: "",
         },
     },
 
@@ -159,7 +159,7 @@ export const siteConfig = {
     // Umami统计配置 - 记得在layout插入Umami的脚本
     // ========================================
     umami: {
-        enable: true, // 是否显示umami统计
+        enable: false, // 是否显示umami统计
         apiKey: "api_NqmrT65HsrwXosO7VqPCXXQPvWr6DclQ", // Umami Cloud V3 API 密钥，从 https://cloud.umami.is 获取
         websiteId: "ac5e0626-4863-41ec-8a66-98ba076846a0", // 网站ID，从 Umami Cloud 获取
         apiEndpoint: "https://api.umami.is", // Umami Cloud API 地址
