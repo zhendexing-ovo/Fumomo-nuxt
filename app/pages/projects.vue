@@ -98,39 +98,11 @@ interface Project {
 // 项目数据
 const projects: Project[] = [
   {
-    title: 'Fumomo',
-    description: '基于 Astro 构建的个人主页，温暖而现代的设计风格(暂未开源)',
-    demoUrl: 'https://fumofumo.vercel.app',
-    githubUrl: 'https://github.com/Hakutyan-bai/fumomo',
+    title: 'example',
+    description: 'example',
+    demoUrl: 'https://example.com/',
+    githubUrl: 'https://github.com/',
     demoText: '预览项目'
-  },
-  {
-    title: 'Fumomo-Nuxt',
-    description: '从 Astro 迁移到 Nuxt 的个人主页，温暖而现代的设计风格(暂未开源)',
-    demoUrl: 'https://fumomo-nuxt.vercel.app',
-    githubUrl: 'https://github.com/Hakutyan-bai/fumomo-nuxt',
-    demoText: '预览项目'
-  },
-  {
-    title: 'file-sharing-site',
-    description: '一个外链文件分享站，支持文件变动通知',
-    demoUrl: '#',
-    githubUrl: 'https://github.com/Hakutyan-bai/file-sharing-site',
-    demoText: '暂无预览'
-  },
-  {
-    title: 'AutoFeedMod',
-    description: '一个MC模组，实现了便携式的自动喂养功能',
-    demoUrl: 'https://modrinth.com/mod/autofeedfabric/',
-    githubUrl: 'https://github.com/Hakutyan-bai/AutoFeedMod',
-    demoText: '下载地址'
-  },
-  {
-    title: '示例项目',
-    description: '一个示例项目的描述',
-    demoUrl: '#',
-    githubUrl: '#',
-    demoText: '暂无预览'
   }
 ]
 

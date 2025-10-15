@@ -120,7 +120,7 @@ onMounted(() => {
       
       <!-- 个人履历区域 - 占据全宽 -->
       <div ref="qualificationRef" class="w-full max-w-5xl mt-8 flex justify-center component-card">
-        <Qualification />
+        <!-- <Qualification /> -->
       </div>
 
       <!-- 滚动提示和进度指示器 -->

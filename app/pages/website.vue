@@ -98,74 +98,8 @@ const websites: Website[] = [
   {
     title: '个人主页',
     description: '这是我的个人主页，也就是本站',
-    url: 'https://fumomo-nuxt.vercel.app/',
+    url: 'https://zswtylgndsl.skura.app/',
     linkText: '点击查看 →'
-  },
-  {
-    title: '个人博客',
-    description: '分享一些技术文章',
-    url: 'https://blog.sakura.ink',
-    linkText: '点击查看 →'
-  },
-  {
-    title: '站点监控',
-    description: '基于 UptimeRobot 接口',
-    url: 'https://jk.skura.me',
-    linkText: '查看站点状态 →'
-  },
-  {
-    title: '示例网站 1',
-    description: '这是一个示例网站的描述',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 2',
-    description: '这是另一个示例网站的描述',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 3',
-    description: '更多示例网站内容',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 4',
-    description: '展示分页功能的示例',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 5',
-    description: '测试分页效果',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 6',
-    description: '更多测试内容',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 7',
-    description: '第二页测试内容',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 8',
-    description: '继续测试分页',
-    url: '#',
-    linkText: '示例链接 →'
-  },
-  {
-    title: '示例网站 9',
-    description: '最后的测试内容',
-    url: '#',
-    linkText: '示例链接 →'
   }
 ]
 

@@ -94,7 +94,7 @@ const startScatterAnimation = () => {
 
   // 1.5秒后导航到文章页
   setTimeout(() => {
-    router.push('/articles')
+    router.push('/about')
   }, 1500)
 }
 </script>
@@ -147,7 +147,7 @@ const startScatterAnimation = () => {
       >
         <div class="animate-bounce">
           <i class="fas fa-mouse text-2xl text-primary mb-2 block"></i>
-          <p class="text-sm text-muted">向下滚动进入文章页</p>
+          <p class="text-sm text-muted">向下滚动进入关于页</p>
         </div>
       </div>
     </main>
